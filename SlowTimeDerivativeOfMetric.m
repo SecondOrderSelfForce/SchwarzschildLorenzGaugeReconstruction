@@ -997,10 +997,6 @@ hbar[l_,m_,r0_,rgridL_,rgridR_]/;OddQ[l+m]:=Module[{M=1,\[Lambda]=1/2 (l-1)(l+2)
 \[Phi]1,\[Phi]1inhom,\[Phi]1Right,\[Phi]1Left,\[Phi]1GridRight,\[Phi]1GridLeft,d\[Phi]1GridRight,d\[Phi]1GridLeft,dd\[Phi]1GridRight,dd\[Phi]1GridLeft,
 \[Phi]2,\[Phi]2inhom,\[Phi]2Right,\[Phi]2Left,\[Phi]2GridRight,\[Phi]2GridLeft,d\[Phi]2GridRight,d\[Phi]2GridLeft,dd\[Phi]2GridRight,dd\[Phi]2GridLeft,
 r,h0,h1,h2,dr0h0,dr0h1,dr0h2,hbar8,hbar9,hbar10,dr0hbar8,dr0hbar9,dr0hbar10,fields},
-\[CapitalOmega]=Sqrt[M/r0^3];
-\[CapitalOmega]p=-3/2 Sqrt[M/r0^5];
-\[Omega]=m \[CapitalOmega];
-\[Omega]p=m \[CapitalOmega]p;
 
 \[Psi]1inhom=\[Psi][1,l,m,r0];
 \[Psi]1Right=Function[{r},Evaluate[\[Psi]1inhom[r][[1,2,1]]]];
@@ -1058,9 +1054,9 @@ hbar10=Function[{r},Evaluate[(-(1/r)2 (-1+l) l (1+l) (2+l) h2[r])]];
 dr0hbar8=Function[{r},Evaluate[2 l(1+l) dr0h0[r]]];
 dr0hbar9=Function[{r},Evaluate[(2 (1-2 M/r) l(1+l) dr0h1[r])]];
 dr0hbar10=Function[{r},Evaluate[(-(1/r)2 (-1+l) l (1+l) (2+l) dr0h2[r])]];
-fields=Simplify[{{hbar9[r],hbar9'[r],hbar10[r],hbar10'[r],hbar8[r],hbar8'[r]},
-{dr0hbar9[r],dr0hbar9'[r],dr0hbar10[r],dr0hbar10'[r],dr0hbar8[r],dr0hbar8'[r]}}];
-{Flatten[Transpose[ReIm[fields/.{\[Psi]1[r]->\[Psi]1GridLeft,\[Psi]1'[r]->d\[Psi]1GridLeft,\[Psi]1''[r]->dd\[Psi]1GridLeft,\[Psi]2[r]->\[Psi]2GridLeft,\[Psi]2'[r]->d\[Psi]2GridLeft,\[Psi]2''[r]->dd\[Psi]2GridLeft,\[Phi]1[r]->\[Phi]1GridLeft,\[Phi]1'[r]->d\[Phi]1GridLeft,\[Phi]1''[r]->dd\[Phi]1GridLeft,\[Phi]2[r]->\[Phi]2GridLeft,\[Phi]2'[r]->d\[Phi]2GridLeft,\[Phi]2''[r]->dd\[Phi]2GridLeft,r->rgridL}],{1,3,2,4}],{{1},{2},{3,4}}],Flatten[Transpose[ReIm[fields/.{\[Psi]1[r]->\[Psi]1GridRight,\[Psi]1'[r]->d\[Psi]1GridRight,\[Psi]1''[r]->dd\[Psi]1GridRight,\[Psi]2[r]->\[Psi]2GridRight,\[Psi]2'[r]->d\[Psi]2GridRight,\[Psi]2''[r]->dd\[Psi]2GridRight,\[Phi]1[r]->\[Phi]1GridRight,\[Phi]1'[r]->d\[Phi]1GridRight,\[Phi]1''[r]->dd\[Phi]1GridRight,\[Phi]2[r]->\[Phi]2GridRight,\[Phi]2'[r]->d\[Phi]2GridRight,\[Phi]2''[r]->dd\[Phi]2GridRight,r->rgridR}],{1,3,2,4}],{{1},{2},{3,4}}]}
+fields={{hbar9[r],hbar9'[r],hbar10[r],hbar10'[r],hbar8[r],hbar8'[r]},
+{dr0hbar9[r],dr0hbar9'[r],dr0hbar10[r],dr0hbar10'[r],dr0hbar8[r],dr0hbar8'[r]}};
+{Flatten[Transpose[ReIm[fields/.{\[Psi]1[r]->\[Psi]1GridLeft,\[Psi]1'[r]->d\[Psi]1GridLeft,\[Psi]1''[r]->dd\[Psi]1GridLeft,\[Psi]2[r]->\[Psi]2GridLeft,\[Psi]2'[r]->d\[Psi]2GridLeft,\[Psi]2''[r]->dd\[Psi]2GridLeft,\[Phi]1[r]->\[Phi]1GridLeft,\[Phi]1'[r]->d\[Phi]1GridLeft,\[Phi]1''[r]->dd\[Phi]1GridLeft,\[Phi]2[r]->\[Phi]2GridLeft,\[Phi]2'[r]->d\[Phi]2GridLeft,\[Phi]2''[r]->dd\[Phi]2GridLeft,r->rgridL,\[Omega]->m Sqrt[M/r0^3],\[Omega]p->m (-3/2 Sqrt[M/r0^5])}],{1,3,2,4}],{{1},{2},{3,4}}],Flatten[Transpose[ReIm[fields/.{\[Psi]1[r]->\[Psi]1GridRight,\[Psi]1'[r]->d\[Psi]1GridRight,\[Psi]1''[r]->dd\[Psi]1GridRight,\[Psi]2[r]->\[Psi]2GridRight,\[Psi]2'[r]->d\[Psi]2GridRight,\[Psi]2''[r]->dd\[Psi]2GridRight,\[Phi]1[r]->\[Phi]1GridRight,\[Phi]1'[r]->d\[Phi]1GridRight,\[Phi]1''[r]->dd\[Phi]1GridRight,\[Phi]2[r]->\[Phi]2GridRight,\[Phi]2'[r]->d\[Phi]2GridRight,\[Phi]2''[r]->dd\[Phi]2GridRight,r->rgridR,\[Omega]->m Sqrt[M/r0^3],\[Omega]p->m (-3/2 Sqrt[M/r0^5])}],{1,3,2,4}],{{1},{2},{3,4}}]}
 ]
 
 
@@ -1082,10 +1078,6 @@ dr0h0,dr0h1,dr0H0,dr0H1,dr0H2,dr0G,dr0k,
 hbar1,hbar2,hbar3,hbar4,hbar5,hbar6,hbar7,
 dr0hbar1,dr0hbar2,dr0hbar3,dr0hbar4,dr0hbar5,dr0hbar6,dr0hbar7,
 fields},
-\[CapitalOmega]=Sqrt[M/r0^3];
-\[CapitalOmega]p=-3/2 Sqrt[M/r0^5];
-\[Omega]=m \[CapitalOmega];
-\[Omega]p=m \[CapitalOmega]p;
 
 \[Psi]1inhom=\[Psi][1,l,m,r0];
 \[Psi]1Right=Function[{r},Evaluate[\[Psi]1inhom[r][[1,2,1]]]];
@@ -1216,9 +1208,9 @@ dr0hbar4=Function[{r},Evaluate[2 l(1+l) dr0h0[r]]];
 dr0hbar5=Function[{r},Evaluate[(2 (1-2 M/r) l(1+l) dr0h1[r])]];
 dr0hbar6=Function[{r},Evaluate[r (dr0H0[r]-dr0H2[r])]];
 dr0hbar7=Function[{r},Evaluate[2 r (l-1)l(1+l)(l+2) dr0G[r]]];
-fields=Simplify[
+fields=
 {{hbar1[r],hbar1'[r],hbar3[r],hbar3'[r],hbar5[r],hbar5'[r],hbar6[r],hbar6'[r],hbar7[r],hbar7'[r],hbar2[r],hbar2'[r],hbar4[r],hbar4'[r]},
-{dr0hbar1[r],dr0hbar1'[r],dr0hbar3[r],dr0hbar3'[r],dr0hbar5[r],dr0hbar5'[r],dr0hbar6[r],dr0hbar6'[r],dr0hbar7[r],dr0hbar7'[r],dr0hbar2[r],dr0hbar2'[r],dr0hbar4[r],dr0hbar4'[r]}}];
+{dr0hbar1[r],dr0hbar1'[r],dr0hbar3[r],dr0hbar3'[r],dr0hbar5[r],dr0hbar5'[r],dr0hbar6[r],dr0hbar6'[r],dr0hbar7[r],dr0hbar7'[r],dr0hbar2[r],dr0hbar2'[r],dr0hbar4[r],dr0hbar4'[r]}};
 {Flatten[Transpose[ReIm[fields/.{
 \[Psi]1[r]->\[Psi]1GridLeft,\[Psi]1'[r]->d\[Psi]1GridLeft,\[Psi]1''[r]->dd\[Psi]1GridLeft,
 \[Psi]z[r]->\[Psi]ZGridLeft,\[Psi]z'[r]->d\[Psi]ZGridLeft,\[Psi]z''[r]->dd\[Psi]ZGridLeft,
@@ -1230,7 +1222,7 @@ fields=Simplify[
 \[Phi]0[r]->\[Phi]0GridLeft,\[Phi]0'[r]->d\[Phi]0GridLeft,\[Phi]0''[r]->dd\[Phi]0GridLeft,
 \[Phi]0b[r]->\[Phi]0bGridLeft,\[Phi]0b'[r]->d\[Phi]0bGridLeft,\[Phi]0b''[r]->dd\[Phi]0bGridLeft,
 \[CapitalKappa][r]->\[CapitalKappa]GridLeft,\[CapitalKappa]'[r]->d\[CapitalKappa]GridLeft,\[CapitalKappa]''[r]->dd\[CapitalKappa]GridLeft,
-r->rgridL}],{1,3,2,4}],{{1},{2},{3,4}}],
+r->rgridL,\[Omega]->m Sqrt[M/r0^3],\[Omega]p->m (-3/2 Sqrt[M/r0^5])}],{1,3,2,4}],{{1},{2},{3,4}}],
 Flatten[Transpose[ReIm[fields/.{
 \[Psi]1[r]->\[Psi]1GridRight,\[Psi]1'[r]->d\[Psi]1GridRight,\[Psi]1''[r]->dd\[Psi]1GridRight,
 \[Psi]z[r]->\[Psi]ZGridRight,\[Psi]z'[r]->d\[Psi]ZGridRight,\[Psi]z''[r]->dd\[Psi]ZGridRight,
@@ -1242,7 +1234,7 @@ Flatten[Transpose[ReIm[fields/.{
 \[Phi]0[r]->\[Phi]0GridRight,\[Phi]0'[r]->d\[Phi]0GridRight,\[Phi]0''[r]->dd\[Phi]0GridRight,
 \[Phi]0b[r]->\[Phi]0bGridRight,\[Phi]0b'[r]->d\[Phi]0bGridRight,\[Phi]0b''[r]->dd\[Phi]0bGridRight,
 \[CapitalKappa][r]->\[CapitalKappa]GridRight,\[CapitalKappa]'[r]->d\[CapitalKappa]GridRight,\[CapitalKappa]''[r]->dd\[CapitalKappa]GridRight,
-r->rgridR}],{1,3,2,4}],{{1},{2},{3,4}}]}
+r->rgridR,\[Omega]->m Sqrt[M/r0^3],\[Omega]p->m (-3/2 Sqrt[M/r0^5])}],{1,3,2,4}],{{1},{2},{3,4}}]}
 ]
 
 
